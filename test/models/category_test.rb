@@ -6,7 +6,7 @@ class CategoryTest < ActiveSupport::TestCase
     parent_2 = categories(:two)
     category = categories(:three)
 
-    #adding 2 parent to category
+    #adding 2 parents to category
     parent_1.sub_categories << category
     parent_2.sub_categories << category
 
