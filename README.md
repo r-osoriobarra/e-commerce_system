@@ -1,11 +1,11 @@
 # e-commerce system
 
-- 1) Modelo e-commerce, agregando las modificaciones para que los productos tengan diferentes variantes:
+1. Modelo e-commerce, agregando las modificaciones para que los productos tengan diferentes variantes:
 ![modelo conceptual e-commerce](https://github.com/r-osoriobarra/models_dl/blob/main/models/e-commerce.jpg) 
 
-- 6) Para implementar el catálogo de productos con los cambios realizados al esquema del modelo e-commerce, se realizó lo siguiente:
+6. Para implementar el catálogo de productos con los cambios realizados al esquema del modelo e-commerce, se realizó lo siguiente:
 
-1. Para el catálogo sólo queremos mostrar una sola variante de cada producto. Por eso, en el método index de HomeController modificamos para que se recorra sólo la primera variante de cada producto, dado que todas demás se verán en la vista show. Para esto, se agrega el método de clase **"catalog"** en el modelo Product, que entrega la primera variante de cada producto.
+- Para el catálogo sólo queremos mostrar una sola variante de cada producto. Por eso, en el método index de HomeController modificamos para que se recorra sólo la primera variante de cada producto, dado que todas demás se verán en la vista show. Para esto, se agrega el método de clase **"catalog"** en el modelo Product, que entrega la primera variante de cada producto.
 
 ```
     # /controllers/HomeController
@@ -27,7 +27,7 @@
 
 ```
     
-2. Para obtener datos específicos del producto, sin afectar las vistas, se añaden métodos para consulta de atributos en el modelo Variant utilizando la relación con Product:
+- Para obtener datos específicos del producto, sin afectar las vistas, se añaden métodos para consulta de atributos en el modelo Variant utilizando la relación con Product:
 
 ```
     # /models/variant.rb
@@ -50,7 +50,7 @@
 
 ```
 
-- 7) La principal modificación al modelo OrderItem es la relación que tenía con el modelo Product, ya que ahora nos interesa llenar nuestro carro de compras con productos del modelo Variant:
+7. La principal modificación al modelo OrderItem es la relación que tenía con el modelo Product, ya que ahora nos interesa llenar nuestro carro de compras con productos del modelo Variant:
 
 ```
     class OrderItem < ApplicationRecord
@@ -59,7 +59,7 @@
     end
 ```
 
-- 8) Para cupones VIP como RRSS, se implementa un modelo Coupon que se relaciona directamente con el modelo Order para aplicar los descuentos. El modelo Coupon tendrá 3 atributos principales
+8. Para cupones VIP como RRSS, se implementa un modelo Coupon que se relaciona directamente con el modelo Order para aplicar los descuentos. El modelo Coupon tendrá 3 atributos principales
     1. type (integer): recibirá 1 o 2 dependiendo si es **RRSS** o **VIP** respectivamente.
     2. value_type (string): recibirá 1 o 2 dependiendo si es **%** o **amount** respectivamente.
     3. value (float): recibe el valor del descuento.
