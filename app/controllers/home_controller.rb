@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @products = Product.all
+    variants = Product.eager_load(:variants)
+    @products = Product.catalog(variants)
   end
 end
